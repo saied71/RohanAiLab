@@ -51,7 +51,7 @@ Also I set vocab-size 30000 for tokenizer.
 
 You can follow up fine-tunning this model in this post:
 
-[Finetuning Language model Using ULMFIT Approach in Persian language](https://saied71.github.io/tazarvAiLab/2021/07/15/Finetunin-Persian-Language-Model.html)
+[Finetuning Language model Using ULMFIT Approach in Persian language](https://saied71.github.io/RohanAiLab/2021/07/17/Finetunin-Persian-Language-Model.html)
 
 **Future Works**
 
