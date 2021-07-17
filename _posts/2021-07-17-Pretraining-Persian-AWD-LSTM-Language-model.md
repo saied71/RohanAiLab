@@ -1,12 +1,10 @@
 ---
 toc: true
 layout: post
-description: A minimal example of using markdown with fastpages.
+description: An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model
 categories: [markdown]
-title: An Example Markdown Post
+title: Pretraining Persian AWD-LSTM Language model
 ---
-# Pretraining Persian AWD-LSTM Language model
-> An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model
 
 In this post, I want to show an overview of pretraining AWD-LSTM language model and use it for classification with the ULMFIT approach. The AWD-LSTM was first introduced in the paper [Regularizing and Optimizing LSTM Language Models](https://arxiv.org/pdf/1708.02182v1.pdf). as authors stated in the paper:
 
