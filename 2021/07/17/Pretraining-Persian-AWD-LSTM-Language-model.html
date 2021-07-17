@@ -1,0 +1,78 @@
+<p>toc: true
+layout: post
+description: A minimal example of using markdown with fastpages.
+categories: [markdown]
+title: An Example Markdown Post
+—</p>
+<h1 id="pretraining-persian-awd-lstm-language-model">Pretraining Persian AWD-LSTM Language model</h1>
+<blockquote>
+  <p>An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model</p>
+</blockquote>
+
+<p>In this post, I want to show an overview of pretraining AWD-LSTM language model and use it for classification with the ULMFIT approach. The AWD-LSTM was first introduced in the paper <a href="https://arxiv.org/pdf/1708.02182v1.pdf">Regularizing and Optimizing LSTM Language Models</a>. as authors stated in the paper:</p>
+
+<p><code class="language-plaintext highlighter-rouge">ASGD Weight-Dropped LSTM, or AWD-LSTM, is a type of recurrent neural network that employs DropConnect for regularization, as well as NT-ASGD for optimization - non-monotonically triggered averaged SGD - which returns an average of last iterations of weights. Additional regularization techniques employed include variable length backpropagation sequences, variational dropout, embedding dropout, weight tying, independent embedding/hidden size, activation regularization and temporal activation regularization.</code></p>
+
+<p>For more information about the details and architecture of this model, you can refer to this post: <a href="https://blog.mlreview.com/understanding-building-blocks-of-ulmfit-818d3775325b">Understanding building blocks of ULMFIT</a>
+Also, here is the implementation of the model in the fastai library:<a href="https://docs.fast.ai/text.models.awdlstm.html#AWD_LSTM">AWD_LSTM</a></p>
+
+<p>So here is the overview of pretraining the AWD-LSTM language model in Persian:</p>
+
+<p><strong>Data</strong></p>
+
+<p>This data was a subset larger data set crawled from various blog posts, news articles, and Wikipedia articles. I collected and normalized ~188k of articles for this model that can make our model more general.</p>
+
+<p>Soon I’ll publish the dataset in <a href="https://huggingface.co/datasets">huggingface hub</a> so that it will be available for further experiment.</p>
+
+<p><strong>Tokenizer</strong></p>
+
+<p>Instead of fastai default tokenizer, which is Spacy, I chose SentencePiece tokenizer. The main reason behind this choice was we have some prefixes and words which decrease the language model performance after tokenization with Spacy tokenizer, but SentencePiece tokenizer fills this gap by implementing subword units.</p>
+
+<p>Note that I used built-in SentencePiece tokenizer of fastai.</p>
+
+<p>Here is some additional information about different kinds of tokenizers::</p>
+
+<p><a href="https://huggingface.co/transformers/tokenizer_summary.html">Summary of the tokenizers</a></p>
+
+<p><a href="https://arxiv.org/pdf/1808.06226.pdf">SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></p>
+
+<p><strong>Training</strong></p>
+
+<p>Fastai offers a bunch of handy tools when it comes to training like <a href="https://sgugger.github.io/the-1cycle-policy.html#the-1cycle-policy">1cycle policy</a>, <a href="https://sgugger.github.io/how-do-you-find-a-good-learning-rate.html">Learning Rate Finder</a> and so on. you can checkout the training script here <a href="https://github.com/saied71/Persian-ULMFIT/blob/main/train.py">train</a></p>
+
+<p>I’ve used P3 instance of AWS for training, which has an NVIDIA V100 GPU, and it took almost 19 hours to train for 10 epochs.</p>
+
+<p><strong>Evaluation and Model description</strong></p>
+
+<p>Here are the metrics for the last epoch:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>accuracy</th>
+      <th>perplexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9</td>
+      <td>3.87870</td>
+      <td>3.90528</td>
+      <td>0.3129</td>
+      <td>49.66</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Also I set vocab-size 30000 for tokenizer.</p>
+
+<p>You can follow up fine-tunning this model in this post:</p>
+
+<p><a href="https://saied71.github.io/tazarvAiLab/2021/07/15/Finetunin-Persian-Language-Model.html">Finetuning Language model Using ULMFIT Approach in Persian language</a></p>
+
+<p><strong>Future Works</strong></p>
+
+<p>The next step will be pretraining the same model architecture for the Estonian language. Stay tunned!!!</p>
