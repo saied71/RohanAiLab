@@ -4,19 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>An Example Markdown Post | Rohan AI Lab</title>
+<title>Pretraining Persian AWD-LSTM Language model | Rohan AI Lab</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="An Example Markdown Post" />
+<meta property="og:title" content="Pretraining Persian AWD-LSTM Language model" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A minimal example of using markdown with fastpages." />
-<meta property="og:description" content="A minimal example of using markdown with fastpages." />
+<meta name="description" content="An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model" />
+<meta property="og:description" content="An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model" />
 <link rel="canonical" href="https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html" />
 <meta property="og:url" content="https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html" />
 <meta property="og:site_name" content="Rohan AI Lab" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-17T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html","@type":"BlogPosting","headline":"An Example Markdown Post","dateModified":"2021-07-17T00:00:00-05:00","datePublished":"2021-07-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html"},"description":"A minimal example of using markdown with fastpages.","@context":"https://schema.org"}</script>
+{"url":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html","@type":"BlogPosting","headline":"Pretraining Persian AWD-LSTM Language model","dateModified":"2021-07-17T00:00:00-05:00","datePublished":"2021-07-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html"},"description":"An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/RohanAiLab/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://saied71.github.io/RohanAiLab/feed.xml" title="Rohan AI Lab" /><link rel="shortcut icon" type="image/x-icon" href="/RohanAiLab/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -71,7 +71,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">An Example Markdown Post</h1><p class="page-description">A minimal example of using markdown with fastpages.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-17T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Pretraining Persian AWD-LSTM Language model</h1><p class="page-description">An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-17T00:00:00-05:00" itemprop="datePublished">
         Jul 17, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -94,14 +94,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#pretraining-persian-awd-lstm-language-model">Pretraining Persian AWD-LSTM Language model</a></li>
-</ul><h1 id="pretraining-persian-awd-lstm-language-model">
-<a class="anchor" href="#pretraining-persian-awd-lstm-language-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pretraining Persian AWD-LSTM Language model</h1>
-<blockquote>
-  <p>An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model</p>
-</blockquote>
-
-<p>In this post, I want to show an overview of pretraining AWD-LSTM language model and use it for classification with the ULMFIT approach. The AWD-LSTM was first introduced in the paper <a href="https://arxiv.org/pdf/1708.02182v1.pdf">Regularizing and Optimizing LSTM Language Models</a>. as authors stated in the paper:</p>
+</ul><p>In this post, I want to show an overview of pretraining AWD-LSTM language model and use it for classification with the ULMFIT approach. The AWD-LSTM was first introduced in the paper <a href="https://arxiv.org/pdf/1708.02182v1.pdf">Regularizing and Optimizing LSTM Language Models</a>. as authors stated in the paper:</p>
 
 <p><code class="language-plaintext highlighter-rouge">ASGD Weight-Dropped LSTM, or AWD-LSTM, is a type of recurrent neural network that employs DropConnect for regularization, as well as NT-ASGD for optimization - non-monotonically triggered averaged SGD - which returns an average of last iterations of weights. Additional regularization techniques employed include variable length backpropagation sequences, variational dropout, embedding dropout, weight tying, independent embedding/hidden size, activation regularization and temporal activation regularization.</code></p>
 
