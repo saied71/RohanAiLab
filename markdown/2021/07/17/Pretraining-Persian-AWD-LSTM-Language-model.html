@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>An Example Markdown Post | Rohan AI Lab</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="An Example Markdown Post" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A minimal example of using markdown with fastpages." />
+<meta property="og:description" content="A minimal example of using markdown with fastpages." />
+<link rel="canonical" href="https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html" />
+<meta property="og:url" content="https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html" />
+<meta property="og:site_name" content="Rohan AI Lab" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html","@type":"BlogPosting","headline":"An Example Markdown Post","dateModified":"2021-07-17T00:00:00-05:00","datePublished":"2021-07-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://saied71.github.io/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html"},"description":"A minimal example of using markdown with fastpages.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/RohanAiLab/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://saied71.github.io/RohanAiLab/feed.xml" title="Rohan AI Lab" /><link rel="shortcut icon" type="image/x-icon" href="/RohanAiLab/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/RohanAiLab/">Rohan AI Lab</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/RohanAiLab/about/">About Me</a><a class="page-link" href="/RohanAiLab/search/">Search</a><a class="page-link" href="/RohanAiLab/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">An Example Markdown Post</h1><p class="page-description">A minimal example of using markdown with fastpages.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-17T00:00:00-05:00" itemprop="datePublished">
+        Jul 17, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/RohanAiLab/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#pretraining-persian-awd-lstm-language-model">Pretraining Persian AWD-LSTM Language model</a></li>
+</ul><h1 id="pretraining-persian-awd-lstm-language-model">
+<a class="anchor" href="#pretraining-persian-awd-lstm-language-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pretraining Persian AWD-LSTM Language model</h1>
+<blockquote>
+  <p>An overview of pretraining language model and use it for classification with the ULMFIT approach in Persian language model</p>
+</blockquote>
+
+<p>In this post, I want to show an overview of pretraining AWD-LSTM language model and use it for classification with the ULMFIT approach. The AWD-LSTM was first introduced in the paper <a href="https://arxiv.org/pdf/1708.02182v1.pdf">Regularizing and Optimizing LSTM Language Models</a>. as authors stated in the paper:</p>
+
+<p><code class="language-plaintext highlighter-rouge">ASGD Weight-Dropped LSTM, or AWD-LSTM, is a type of recurrent neural network that employs DropConnect for regularization, as well as NT-ASGD for optimization - non-monotonically triggered averaged SGD - which returns an average of last iterations of weights. Additional regularization techniques employed include variable length backpropagation sequences, variational dropout, embedding dropout, weight tying, independent embedding/hidden size, activation regularization and temporal activation regularization.</code></p>
+
+<p>For more information about the details and architecture of this model, you can refer to this post: <a href="https://blog.mlreview.com/understanding-building-blocks-of-ulmfit-818d3775325b">Understanding building blocks of ULMFIT</a>
+Also, here is the implementation of the model in the fastai library:<a href="https://docs.fast.ai/text.models.awdlstm.html#AWD_LSTM">AWD_LSTM</a></p>
+
+<p>So here is the overview of pretraining the AWD-LSTM language model in Persian:</p>
+
+<p><strong>Data</strong></p>
+
+<p>This data was a subset larger data set crawled from various blog posts, news articles, and Wikipedia articles. I collected and normalized ~188k of articles for this model that can make our model more general.</p>
+
+<p>Soon I’ll publish the dataset in <a href="https://huggingface.co/datasets">huggingface hub</a> so that it will be available for further experiment.</p>
+
+<p><strong>Tokenizer</strong></p>
+
+<p>Instead of fastai default tokenizer, which is Spacy, I chose SentencePiece tokenizer. The main reason behind this choice was we have some prefixes and words which decrease the language model performance after tokenization with Spacy tokenizer, but SentencePiece tokenizer fills this gap by implementing subword units.</p>
+
+<p>Note that I used built-in SentencePiece tokenizer of fastai.</p>
+
+<p>Here is some additional information about different kinds of tokenizers::</p>
+
+<p><a href="https://huggingface.co/transformers/tokenizer_summary.html">Summary of the tokenizers</a></p>
+
+<p><a href="https://arxiv.org/pdf/1808.06226.pdf">SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></p>
+
+<p><strong>Training</strong></p>
+
+<p>Fastai offers a bunch of handy tools when it comes to training like <a href="https://sgugger.github.io/the-1cycle-policy.html#the-1cycle-policy">1cycle policy</a>, <a href="https://sgugger.github.io/how-do-you-find-a-good-learning-rate.html">Learning Rate Finder</a> and so on. you can checkout the training script here <a href="https://github.com/saied71/Persian-ULMFIT/blob/main/train.py">train</a></p>
+
+<p>I’ve used P3 instance of AWS for training, which has an NVIDIA V100 GPU, and it took almost 19 hours to train for 10 epochs.</p>
+
+<p><strong>Evaluation and Model description</strong></p>
+
+<p>Here are the metrics for the last epoch:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>accuracy</th>
+      <th>perplexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9</td>
+      <td>3.87870</td>
+      <td>3.90528</td>
+      <td>0.3129</td>
+      <td>49.66</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Also I set vocab-size 30000 for tokenizer.</p>
+
+<p>You can follow up fine-tunning this model in this post:</p>
+
+<p><a href="https://saied71.github.io/tazarvAiLab/2021/07/15/Finetunin-Persian-Language-Model.html">Finetuning Language model Using ULMFIT Approach in Persian language</a></p>
+
+<p><strong>Future Works</strong></p>
+
+<p>The next step will be pretraining the same model architecture for the Estonian language. Stay tunned!!!</p>
+
+  </div><a class="u-url" href="/RohanAiLab/markdown/2021/07/17/Pretraining-Persian-AWD-LSTM-Language-model.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/RohanAiLab/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/RohanAiLab/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/RohanAiLab/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>AI for everyone!!</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/saied71" title="saied71"><svg class="svg-icon grey"><use xlink:href="/RohanAiLab/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/saied-alimoradi-197015171" title="saied-alimoradi-197015171"><svg class="svg-icon grey"><use xlink:href="/RohanAiLab/assets/minima-social-icons.svg#linkedin"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
