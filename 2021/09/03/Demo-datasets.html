@@ -8,15 +8,15 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="How to use HuggingFace datasets library" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of ersian_news_dataset" />
-<meta property="og:description" content="This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of ersian_news_dataset" />
-<link rel="canonical" href="https://saied71.github.io/RohanAiLab/2021/09/03/Demo_datasets.html" />
-<meta property="og:url" content="https://saied71.github.io/RohanAiLab/2021/09/03/Demo_datasets.html" />
+<meta name="description" content="This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of persian_news_dataset" />
+<meta property="og:description" content="This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of persian_news_dataset" />
+<link rel="canonical" href="https://saied71.github.io/RohanAiLab/2021/09/03/Demo-datasets.html" />
+<meta property="og:url" content="https://saied71.github.io/RohanAiLab/2021/09/03/Demo-datasets.html" />
 <meta property="og:site_name" content="Rohan AI Lab" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-03T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://saied71.github.io/RohanAiLab/2021/09/03/Demo_datasets.html","@type":"BlogPosting","headline":"How to use HuggingFace datasets library","dateModified":"2021-09-03T00:00:00-05:00","datePublished":"2021-09-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://saied71.github.io/RohanAiLab/2021/09/03/Demo_datasets.html"},"description":"This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of ersian_news_dataset","@context":"https://schema.org"}</script>
+{"url":"https://saied71.github.io/RohanAiLab/2021/09/03/Demo-datasets.html","@type":"BlogPosting","headline":"How to use HuggingFace datasets library","dateModified":"2021-09-03T00:00:00-05:00","datePublished":"2021-09-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://saied71.github.io/RohanAiLab/2021/09/03/Demo-datasets.html"},"description":"This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of persian_news_dataset","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/RohanAiLab/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://saied71.github.io/RohanAiLab/feed.xml" title="Rohan AI Lab" /><link rel="shortcut icon" type="image/x-icon" href="/RohanAiLab/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -71,7 +71,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">How to use HuggingFace datasets library</h1><p class="page-description">This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of ersian_news_dataset</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-03T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">How to use HuggingFace datasets library</h1><p class="page-description">This post is a quick HOWTO for huggingface datasets library including preprocessing and batch processing the the huggingface dataset with usecase of persian_news_dataset</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-03T00:00:00-05:00" itemprop="datePublished">
         Sep 3, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -88,19 +88,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/saied71/RohanAiLab/tree/master/_notebooks/2021-9-4-Demo_datasets.ipynb" role="button" target="_blank">
+    <a href="https://github.com/saied71/RohanAiLab/tree/master/_notebooks/2021-9-4-Demo-datasets.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/RohanAiLab/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/saied71/RohanAiLab/master?filepath=_notebooks%2F2021-9-4-Demo_datasets.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/saied71/RohanAiLab/master?filepath=_notebooks%2F2021-9-4-Demo-datasets.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/RohanAiLab/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/saied71/RohanAiLab/blob/master/_notebooks/2021-9-4-Demo_datasets.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/saied71/RohanAiLab/blob/master/_notebooks/2021-9-4-Demo-datasets.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/RohanAiLab/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -112,14 +112,14 @@ window.onload = wrap_img;
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2021-9-4-Demo_datasets.ipynb
+# file to edit: _notebooks/2021-9-4-Demo-datasets.ipynb
 -->
 
 <div class="container" id="notebook-container">
         
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://huggingface.co/docs/datasets/quicktour.html">datasets</a> library is the best way to use data at any scale and it's the most efficient and easy-to-use tool that I ever see to work with data.
+<p><a href="https://huggingface.co/docs/datasets/quicktour.html">datasets</a> library is one of the best way to use data at any scale and it's the most efficient and easy-to-use tool that I ever see to work with data.
 according to docs here are  three main features of datasets library:</p>
 
 </div>
@@ -923,7 +923,7 @@ I think These functionalities comes handy especialy map which we can apply to wh
 
 
 
-  </div><a class="u-url" href="/RohanAiLab/2021/09/03/Demo_datasets.html" hidden></a>
+  </div><a class="u-url" href="/RohanAiLab/2021/09/03/Demo-datasets.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
