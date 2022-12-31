@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Escaping CUDA out of memory while training transformers
+categories: [markdown]
+title: Escaping CUDA out of memory while training transformers
+---
+
 CUDA out of memory is one of the most common and also painful errors while training deep learning models. One of the most straightforward solutions is to reduce the batch size but that may not work if you are dealing with large models and then WHAT?!!
 
 Here I discuss approaches to overcome this pain. Keep in mind that this short blog is heavily borrowed from the HuggigeFace blog so if you want to dive deep into these topics check out [Efficient Training on a Single GPU](https://huggingface.co/docs/transformers/perf_train_gpu_one) 
